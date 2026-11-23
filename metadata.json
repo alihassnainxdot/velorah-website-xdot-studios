@@ -1,0 +1,6 @@
+{
+  "name": "Velorah",
+  "description": "Tools for deep thinkers, bold creators, and quiet rebels.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
