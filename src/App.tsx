@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { CustomCursor } from '@/src/components/CustomCursor';
 import { HeroSection } from '@/src/components/HeroSection';
 import { JourneyDialog } from '@/src/components/JourneyDialog';
@@ -11,6 +11,16 @@ export default function App() {
   const [activeNav, setActiveNav] = useState<NavSectionId>('home');
   const [openSection, setOpenSection] = useState<Exclude<NavSectionId, 'home'> | null>(null);
   const [journeyOpen, setJourneyOpen] = useState(false);
+
+  useEffect(() => {
+    const canonicalUrl = `${window.location.origin}${window.location.pathname}`;
+    document
+      .querySelector('link[rel="canonical"]')
+      ?.setAttribute('href', canonicalUrl);
+    document
+      .querySelector('meta[property="og:url"]')
+      ?.setAttribute('content', canonicalUrl);
+  }, []);
 
   const handleSelectNav = (id: NavSectionId) => {
     const next = resolveNavSelection(id);
