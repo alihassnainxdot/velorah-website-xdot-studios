@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Menu } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { LiquidMetalButton } from '@/components/ui/liquid-metal-button';
 import {
   Sheet,
   SheetContent,
@@ -70,15 +71,11 @@ export function Navbar({ activeNav, onSelectNav, onBeginJourney }: NavbarProps) 
         </nav>
 
         <div className="flex items-center gap-3 shrink-0">
-          <Button
-            type="button"
-            variant="liquid"
-            size="none"
+          <LiquidMetalButton
+            label="Begin Journey"
             onClick={onBeginJourney}
-            className="rounded-full px-5 py-2 sm:px-6 sm:py-2.5 text-sm text-foreground hover:scale-[1.03]"
-          >
-            Begin Journey
-          </Button>
+            size="default"
+          />
 
           <Sheet open={mobileMenuOpen} onOpenChange={setMobileMenuOpen}>
             <SheetTrigger

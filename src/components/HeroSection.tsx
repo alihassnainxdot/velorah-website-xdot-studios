@@ -1,10 +1,13 @@
-import { Button } from '@/components/ui/button';
+import { DiaText } from '@/components/ui/dia-text';
+import { LiquidMetalButton } from '@/components/ui/liquid-metal-button';
 import { useScrollReveal } from '@/src/hooks/useScrollReveal';
 import { getRevealClassName } from '@/src/lib/reveal';
 
 interface HeroSectionProps {
   onBeginJourney: () => void;
 }
+
+const TAGLINE_WORDS = ['anywhere.', 'anytime.', 'in focus.', 'beyond noise.'];
 
 export function HeroSection({ onBeginJourney }: HeroSectionProps) {
   const headingReveal = useScrollReveal<HTMLHeadingElement>({ threshold: 0.1 });
@@ -16,14 +19,22 @@ export function HeroSection({ onBeginJourney }: HeroSectionProps) {
       <h1
         ref={headingReveal.ref}
         data-revealed={String(headingReveal.isRevealed)}
-        className={`text-5xl sm:text-7xl md:text-8xl leading-[0.95] tracking-[-2.46px] max-w-7xl font-normal text-foreground text-balance ${getRevealClassName(
-          headingReveal.isRevealed,
-          'animate-fade-rise'
-        )}`}
+        className="text-5xl sm:text-7xl md:text-8xl leading-[0.95] tracking-[-2.46px] max-w-7xl font-normal text-foreground text-balance"
         style={{ fontFamily: "'Instrument Serif', serif" }}
       >
-        Where <em className="not-italic text-muted-foreground">dreams</em> rise{' '}
-        <em className="not-italic text-muted-foreground">through the silence.</em>
+        <DiaText
+          duration={1.35}
+          textColor="#ffffff"
+          text="Meet XDOT, he got you"
+        />{' '}
+        <DiaText
+          repeat
+          repeatDelay={0.9}
+          duration={1.35}
+          delay={0.2}
+          textColor="#ffffff"
+          text={TAGLINE_WORDS}
+        />
       </h1>
 
       <p
@@ -46,15 +57,11 @@ export function HeroSection({ onBeginJourney }: HeroSectionProps) {
           'animate-fade-rise-delay-2'
         )}`}
       >
-        <Button
-          type="button"
-          variant="liquid"
-          size="none"
+        <LiquidMetalButton
+          label="Begin Journey"
           onClick={onBeginJourney}
-          className="rounded-full px-14 py-5 text-base text-foreground hover:scale-[1.03] cursor-pointer"
-        >
-          Begin Journey
-        </Button>
+          size="lg"
+        />
       </div>
     </main>
   );
